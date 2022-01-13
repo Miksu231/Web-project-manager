@@ -1,0 +1,15 @@
+<% layout("./layouts/layout.eta") %>
+<h2> Add a project </h2>
+<p> To add a project, submit the name of the project below </p>
+<form action="/projects" method="POST">
+<input type ="text" name="name">
+<input type ="submit" value="Submit project">
+</form>
+
+<h2> Existing projects: </h2>
+<p> To view a project, click on the name of the project. To delete a project, press the "Remove" button below the project name.
+</ul>
+<% it.projects.forEach((project) => { %>
+<li> <a href ="/projects/<%= project.id %>"><%=project.name %></a><form method="POST" action="/projects/<%= project.id%>"><input type="submit" value="Remove"> </form> </li>
+<% }); %>
+</ul>
